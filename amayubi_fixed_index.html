@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>指圧サロン あまゆび｜桐生市の本格指圧サロン</title>
+<meta name="description" content="揉み返しゼロでほぐしMAX。厚生労働省認可の国家資格保有者が施術する安心の指圧サロン「あまゆび」。桐生市相生町。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+--color-bg-dark:#0a0a0a;
+--color-bg:#111111;
+--color-bg-card:#1a1a1a;
+--color-bg-card-hover:#222222;
+--color-surface:#151515;
+--color-border:rgba(193,163,115,0.15);
+--color-border-light:rgba(255,255,255,0.06);
+--color-gold:#c1a373;
+--color-gold-light:#d4bc96;
+--color-gold-dark:#9a7d52;
+--color-gold-glow:rgba(193,163,115,0.2);
+--color-text:#e8e4de;
+--color-text-muted:#9a9590;
+--color-text-subtle:#6b6560;
+--color-white:#ffffff;
+--color-accent:#8b7355;
+--color-line-green:#06C755;
+--font-serif:'Noto Serif JP','Yu Mincho',serif;
+--font-sans:'Noto Sans JP','Hiragino Kaku Gothic Pro',sans-serif;
+--font-display:'Cormorant Garamond',var(--font-serif);
+--section-padding:120px;
+--container-width:1200px;
+--transition-fast:0.2s cubic-bezier(0.4,0,0.2,1);
+--transition-base:0.4s cubic-bezier(0.4,0,0.2,1);
+--transition-slow:0.8s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{font-family:var(--font-sans);background-color:var(--color-bg);color:var(--color-text);line-height:1.8;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;transition:var(--transition-fast);}
+ul{list-style:none;}
+img{max-width:100%;height:auto;display:block;}
+.container{max-width:var(--container-width);margin:0 auto;padding:0 24px;}
+.sp-only{display:none;}
+::selection{background:var(--color-gold);color:var(--color-bg-dark);}
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--color-bg-dark);}
+::-webkit-scrollbar-thumb{background:var(--color-gold-dark);border-radius:3px;}
+
+/* Navbar */
+.navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:20px 0;transition:var(--transition-base);}
+.navbar.scrolled{background:rgba(10,10,10,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid var(--color-border);}
+.nav-container{max-width:var(--container-width);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;flex-direction:column;align-items:flex-start;gap:0;}
+.nav-logo .logo-main{font-family:var(--font-serif);font-size:1.6rem;font-weight:600;color:var(--color-gold);letter-spacing:0.15em;line-height:1.2;}
+.nav-logo .logo-sub{font-size:0.65rem;color:var(--color-text-muted);letter-spacing:0.3em;font-weight:300;}
+.nav-menu{display:flex;align-items:center;gap:36px;}
+.nav-link{font-size:0.85rem;font-weight:400;color:var(--color-text-muted);letter-spacing:0.08em;position:relative;padding:4px 0;}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--color-gold);transition:var(--transition-base);}
+.nav-link:hover{color:var(--color-gold-light);}
+.nav-link:hover::after{width:100%;}
+.nav-cta{background:transparent;border:1px solid var(--color-gold);color:var(--color-gold)!important;padding:8px 20px!important;border-radius:2px;font-size:0.8rem!important;letter-spacing:0.1em;transition:var(--transition-base);}
+.nav-cta::after{display:none;}
+.nav-cta:hover{background:var(--color-gold);color:var(--color-bg-dark)!important;}
+.nav-cta i{margin-right:6px;font-size:0.7rem;}
+.nav-toggle{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001;}
+.nav-toggle span{width:24px;height:1.5px;background:var(--color-gold);transition:var(--transition-base);display:block;}
+.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.nav-toggle.active span:nth-child(2){opacity:0;}
+.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg-image{position:absolute;inset:0;background:linear-gradient(135deg,#1a1410 0%,#0d0a07 50%,#1a1410 100%);background-size:cover;background-position:center;animation:heroZoom 25s ease-in-out infinite alternate;}
+@keyframes heroZoom{0%{transform:scale(1);}100%{transform:scale(1.08);}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.4) 0%,rgba(10,10,10,0.2) 40%,rgba(10,10,10,0.4) 70%,rgba(10,10,10,0.85) 100%),radial-gradient(ellipse at 20% 80%,rgba(193,163,115,0.15) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(139,115,85,0.1) 0%,transparent 50%);z-index:1;}
+.hero-particles{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.hero-content{position:relative;text-align:center;padding:0 24px;z-index:2;}
+.hero-badge{display:inline-block;padding:8px 24px;border:1px solid var(--color-border);border-radius:50px;margin-bottom:40px;opacity:0;transform:translateY(-20px);animation:fadeInDown 1s 0.3s ease forwards;}
+.hero-badge span{font-size:0.75rem;color:var(--color-gold);letter-spacing:0.15em;font-weight:400;}
+.hero-title{font-family:var(--font-serif);margin-bottom:32px;opacity:0;transform:translateY(30px);animation:fadeInUp 1s 0.6s ease forwards;}
+.hero-title-line{display:block;font-size:clamp(1.5rem,4vw,3rem);font-weight:300;color:var(--color-text);letter-spacing:0.2em;line-height:1.6;}
+.hero-title-brand{display:block;font-size:clamp(2.5rem,7vw,5.5rem);font-weight:700;color:var(--color-gold);letter-spacing:0.15em;line-height:1.3;margin-top:8px;text-shadow:0 0 60px rgba(193,163,115,0.3);}
+.hero-subtitle{font-size:clamp(0.85rem,1.5vw,1rem);color:var(--color-text-muted);letter-spacing:0.08em;line-height:2;margin-bottom:48px;opacity:0;transform:translateY(30px);animation:fadeInUp 1s 0.9s ease forwards;}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(30px);animation:fadeInUp 1s 1.2s ease forwards;}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.8s ease forwards;}
+.hero-scroll span{font-size:0.65rem;letter-spacing:0.2em;color:var(--color-text-subtle);text-transform:uppercase;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--color-gold),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;font-family:var(--font-sans);font-size:0.85rem;font-weight:500;letter-spacing:0.1em;border:none;cursor:pointer;transition:var(--transition-base);position:relative;overflow:hidden;}
+.btn-primary{background:linear-gradient(135deg,var(--color-gold),var(--color-gold-dark));color:var(--color-bg-dark);border:1px solid var(--color-gold);}
+.btn-primary:hover{background:linear-gradient(135deg,var(--color-gold-light),var(--color-gold));transform:translateY(-2px);box-shadow:0 8px 30px rgba(193,163,115,0.3);}
+.btn-outline{background:transparent;color:var(--color-gold);border:1px solid var(--color-gold);}
+.btn-outline:hover{background:rgba(193,163,115,0.1);transform:translateY(-2px);}
+.btn-menu{background:transparent;border:1px solid var(--color-gold);color:var(--color-gold);padding:12px 28px;width:100%;justify-content:center;margin-top:auto;}
+.btn-menu:hover{background:var(--color-gold);color:var(--color-bg-dark);}
+.btn-line{background:var(--color-line-green);color:white;padding:16px 40px;border-radius:4px;font-size:0.9rem;font-weight:600;white-space:nowrap;}
+.btn-line:hover{background:#05b34a;transform:translateY(-2px);box-shadow:0 8px 30px rgba(6,199,85,0.3);}
+.btn-line i{font-size:1.2rem;}
+.btn-full{width:100%;justify-content:center;}
+
+/* Section Common */
+.section{padding:var(--section-padding) 0;position:relative;}
+.section-header{text-align:center;margin-bottom:80px;}
+.section-label{display:block;font-family:var(--font-display);font-size:0.85rem;font-weight:300;font-style:italic;color:var(--color-gold);letter-spacing:0.25em;margin-bottom:16px;text-transform:uppercase;}
+.section-title{font-family:var(--font-serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:600;color:var(--color-text);letter-spacing:0.15em;}
+.section-divider{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:24px;}
+.section-divider span{width:40px;height:1px;background:linear-gradient(to right,transparent,var(--color-gold));}
+.section-divider span:last-child{background:linear-gradient(to left,transparent,var(--color-gold));}
+.section-divider i{color:var(--color-gold);font-size:0.8rem;opacity:0.6;}
+
+/* Gallery */
+.gallery-section{background:var(--color-bg-dark);overflow:hidden;}
+.gallery-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:20px;min-height:480px;}
+.gallery-item{position:relative;overflow:hidden;border:1px solid var(--color-border-light);}
+.gallery-image-wrapper{position:relative;width:100%;height:100%;overflow:hidden;background:var(--color-bg-card);}
+.gallery-image-wrapper img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(0.25,0.46,0.45,0.94);}
+.gallery-item:hover .gallery-image-wrapper img{transform:scale(1.08);}
+.gallery-placeholder{width:100%;height:100%;min-height:480px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1410,#0d0a07);color:var(--color-gold);font-size:0.8rem;letter-spacing:0.1em;flex-direction:column;gap:12px;}
+.gallery-placeholder i{font-size:2.5rem;opacity:0.3;}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,10,10,0.85) 0%,rgba(10,10,10,0.1) 50%,transparent 100%);display:flex;align-items:flex-end;padding:36px;opacity:0;transition:var(--transition-base);}
+.gallery-item:hover .gallery-overlay{opacity:1;}
+.gallery-caption{transform:translateY(12px);transition:var(--transition-base);}
+.gallery-item:hover .gallery-caption{transform:translateY(0);}
+.gallery-tag{display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-style:italic;color:var(--color-gold);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;border-bottom:1px solid var(--color-gold);padding-bottom:4px;}
+.gallery-caption h3{font-family:var(--font-serif);font-size:1.2rem;font-weight:500;color:var(--color-white);letter-spacing:0.1em;margin-bottom:6px;}
+.gallery-caption p{font-size:0.82rem;color:var(--color-text-muted);line-height:1.6;}
+.gallery-item-large,.gallery-item-tall{min-height:480px;}
+
+/* Concept */
+.concept{background:var(--color-bg);}
+.concept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.concept-card{background:var(--color-bg-card);border:1px solid var(--color-border-light);padding:48px 36px;text-align:center;transition:var(--transition-base);position:relative;overflow:hidden;}
+.concept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--color-gold),transparent);opacity:0;transition:var(--transition-base);}
+.concept-card:hover{transform:translateY(-8px);border-color:var(--color-border);box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+.concept-card:hover::before{opacity:1;}
+.concept-icon{margin-bottom:24px;position:relative;}
+.icon-circle{width:72px;height:72px;border-radius:50%;border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;margin:0 auto;transition:var(--transition-base);}
+.icon-circle i{font-size:1.6rem;color:var(--color-gold);}
+.concept-card:hover .icon-circle{border-color:var(--color-gold);background:rgba(193,163,115,0.08);}
+.concept-number{position:absolute;top:-8px;right:calc(50% - 52px);font-family:var(--font-display);font-size:0.75rem;color:var(--color-text-subtle);letter-spacing:0.1em;}
+.concept-title{font-family:var(--font-serif);font-size:1.15rem;font-weight:600;color:var(--color-gold-light);letter-spacing:0.1em;margin-bottom:16px;}
+.concept-line{width:32px;height:1px;background:var(--color-gold);margin:0 auto 20px;opacity:0.4;}
+.concept-text{font-size:0.9rem;color:var(--color-text-muted);line-height:1.9;}
+.concept-text strong{color:var(--color-gold);font-weight:600;}
+
+/* Stats */
+.stats-section{position:relative;padding:80px 0;background:linear-gradient(135deg,rgba(193,163,115,0.05),transparent),var(--color-bg-dark);border-top:1px solid var(--color-border-light);border-bottom:1px solid var(--color-border-light);}
+.stats-grid{display:flex;align-items:center;justify-content:center;gap:60px;}
+.stat-item{text-align:center;flex:1;max-width:280px;}
+.stat-number{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--color-gold);line-height:1;letter-spacing:0.02em;}
+.stat-unit{font-size:0.85rem;color:var(--color-gold-light);letter-spacing:0.1em;margin-top:4px;}
+.stat-label{font-size:0.8rem;color:var(--color-text-subtle);letter-spacing:0.15em;margin-top:12px;}
+.stat-divider{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--color-border),transparent);}
+
+/* Menu */
+.menu-section{background:var(--color-surface);}
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.menu-card{position:relative;border:1px solid var(--color-border-light);background:var(--color-bg-card);transition:var(--transition-base);overflow:hidden;}
+.menu-card:hover{border-color:var(--color-border);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.25);}
+.menu-card-featured{border-color:var(--color-gold);background:linear-gradient(180deg,rgba(193,163,115,0.06),var(--color-bg-card));}
+.menu-badge{position:absolute;top:16px;right:16px;background:var(--color-gold);color:var(--color-bg-dark);padding:4px 14px;font-size:0.7rem;font-weight:600;letter-spacing:0.1em;z-index:2;}
+.menu-card-inner{padding:44px 32px;display:flex;flex-direction:column;align-items:center;text-align:center;min-height:420px;}
+.menu-icon{width:56px;height:56px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;}
+.menu-icon i{font-size:2rem;color:var(--color-gold);}
+.menu-name{font-family:var(--font-serif);font-size:1.2rem;font-weight:600;color:var(--color-text);letter-spacing:0.15em;margin-bottom:8px;}
+.menu-duration{font-size:0.85rem;color:var(--color-text-muted);margin-bottom:20px;letter-spacing:0.05em;}
+.menu-duration i{margin-right:4px;color:var(--color-gold);font-size:0.8rem;}
+.menu-price{display:flex;align-items:baseline;justify-content:center;gap:2px;margin-bottom:24px;}
+.price-yen{font-family:var(--font-display);font-size:1rem;color:var(--color-gold);}
+.price-amount{font-family:var(--font-display);font-size:2.4rem;font-weight:400;color:var(--color-gold);line-height:1;letter-spacing:0.02em;}
+.price-tax{font-size:0.75rem;color:var(--color-text-subtle);margin-left:4px;}
+.menu-desc{font-size:0.85rem;color:var(--color-text-muted);line-height:1.8;margin-bottom:28px;}
+.option-list{text-align:left;margin-bottom:20px;width:100%;}
+.option-list li{padding:8px 0;font-size:0.9rem;color:var(--color-text-muted);border-bottom:1px solid var(--color-border-light);display:flex;align-items:center;gap:10px;}
+.option-list li:last-child{border-bottom:none;}
+.option-list li i{color:var(--color-gold);font-size:0.7rem;}
+.option-note{font-size:0.8rem!important;color:var(--color-text-subtle)!important;}
+
+/* Recommend */
+.recommend-section{background:var(--color-bg);}
+.recommend-grid{display:flex;flex-direction:column;gap:20px;max-width:800px;margin:0 auto;}
+.recommend-card{display:flex;align-items:flex-start;gap:28px;padding:36px 40px;background:var(--color-bg-card);border:1px solid var(--color-border-light);transition:var(--transition-base);}
+.recommend-card:hover{border-color:var(--color-border);transform:translateX(8px);box-shadow:-8px 0 30px rgba(193,163,115,0.08);}
+.recommend-icon{flex-shrink:0;width:52px;height:52px;border:1px solid var(--color-border);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition-base);}
+.recommend-icon i{font-size:1.1rem;color:var(--color-gold);}
+.recommend-card:hover .recommend-icon{background:rgba(193,163,115,0.1);border-color:var(--color-gold);}
+.recommend-content h3{font-family:var(--font-serif);font-size:1.05rem;font-weight:500;color:var(--color-gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.recommend-content p{font-size:0.88rem;color:var(--color-text-muted);line-height:1.8;}
+
+/* LINE */
+.line-section{padding:0 0 var(--section-padding) 0;background:var(--color-bg);}
+.line-banner{background:linear-gradient(135deg,rgba(6,199,85,0.08),rgba(6,199,85,0.03));border:1px solid rgba(6,199,85,0.2);padding:48px 56px;display:flex;align-items:center;justify-content:space-between;gap:32px;}
+.line-content{display:flex;align-items:center;gap:20px;}
+.line-icon i{font-size:2.5rem;color:var(--color-line-green);}
+.line-text h3{font-family:var(--font-serif);font-size:1.2rem;font-weight:600;color:var(--color-text);letter-spacing:0.08em;margin-bottom:4px;}
+.line-text p{font-size:0.85rem;color:var(--color-text-muted);}
+
+/* Access */
+.access-section{background:var(--color-surface);}
+.access-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.info-card{background:var(--color-bg-card);border:1px solid var(--color-border-light);padding:48px 40px;}
+.info-shop-name{font-family:var(--font-serif);font-size:1.8rem;font-weight:700;color:var(--color-gold);letter-spacing:0.12em;margin-bottom:32px;text-align:center;}
+.info-label-jp{display:block;font-size:0.75rem;font-weight:400;color:var(--color-text-muted);letter-spacing:0.3em;margin-bottom:4px;}
+.info-row{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid var(--color-border-light);}
+.info-row:last-child{border-bottom:none;}
+.info-icon{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--color-gold);font-size:0.9rem;margin-top:2px;}
+.info-detail{display:flex;flex-direction:column;gap:2px;}
+.info-label{font-size:0.7rem;color:var(--color-text-subtle);letter-spacing:0.15em;text-transform:uppercase;}
+.info-value{font-size:0.92rem;color:var(--color-text);line-height:1.7;}
+.info-phone{font-family:var(--font-display);font-size:1.3rem;color:var(--color-gold)!important;letter-spacing:0.05em;}
+.info-phone:hover{color:var(--color-gold-light)!important;}
+.info-note{font-size:0.75rem;color:var(--color-text-subtle);}
+.info-hours{display:flex;flex-direction:column;gap:6px;}
+.hours-row{display:flex;align-items:center;gap:12px;}
+.day-label{font-size:0.85rem;color:var(--color-text-muted);min-width:80px;font-weight:500;}
+.day-time{font-family:var(--font-display);font-size:0.92rem;color:var(--color-text);letter-spacing:0.05em;}
+.line-benefit{display:inline-block;background:rgba(6,199,85,0.15);color:var(--color-line-green);padding:2px 10px;font-size:0.72rem;font-weight:600;letter-spacing:0.05em;border-radius:2px;}
+.info-cta{margin-top:32px;}
+.map-wrapper{width:100%;height:100%;min-height:500px;border:1px solid var(--color-border-light);overflow:hidden;position:relative;background:var(--color-bg-card);}
+.map-wrapper iframe{width:100%;height:100%;min-height:500px;filter:grayscale(0.8) brightness(0.7) contrast(1.2);transition:var(--transition-base);}
+.map-wrapper:hover iframe{filter:grayscale(0.3) brightness(0.85) contrast(1.1);}
+
+/* Footer */
+.footer{background:var(--color-bg-dark);}
+.footer-top{padding:80px 0 60px;border-top:1px solid var(--color-border-light);}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1.2fr;gap:60px;}
+.footer-logo{display:flex;flex-direction:column;align-items:flex-start;gap:0;margin-bottom:16px;}
+.footer-logo .logo-main{font-family:var(--font-serif);font-size:1.8rem;font-weight:600;color:var(--color-gold);letter-spacing:0.15em;}
+.footer-logo .logo-sub{font-size:0.65rem;color:var(--color-text-muted);letter-spacing:0.3em;}
+.footer-tagline{font-family:var(--font-serif);font-size:0.9rem;color:var(--color-text-muted);letter-spacing:0.15em;margin-bottom:8px;}
+.footer-desc{font-size:0.8rem;color:var(--color-text-subtle);line-height:1.7;}
+.footer-nav h4,.footer-contact h4{font-family:var(--font-serif);font-size:0.85rem;color:var(--color-gold);letter-spacing:0.15em;margin-bottom:20px;font-weight:500;}
+.footer-nav ul{display:flex;flex-direction:column;gap:12px;}
+.footer-nav a{font-size:0.85rem;color:var(--color-text-muted);letter-spacing:0.05em;transition:var(--transition-fast);}
+.footer-nav a:hover{color:var(--color-gold-light);padding-left:8px;}
+.footer-phone{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:1.2rem;color:var(--color-gold);letter-spacing:0.05em;margin-bottom:16px;}
+.footer-phone:hover{color:var(--color-gold-light);}
+.footer-phone i{font-size:0.85rem;}
+.footer-address{font-size:0.82rem;color:var(--color-text-muted);line-height:1.7;}
+.footer-bottom{padding:20px 0;border-top:1px solid var(--color-border-light);text-align:center;}
+.footer-bottom p{font-size:0.72rem;color:var(--color-text-subtle);letter-spacing:0.1em;}
+
+/* Floating Phone */
+.floating-phone{display:none;position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:var(--color-gold);color:var(--color-bg-dark);border-radius:50%;align-items:center;justify-content:center;font-size:1.2rem;z-index:999;box-shadow:0 4px 20px rgba(193,163,115,0.4);transition:var(--transition-base);animation:phonePulse 3s ease-in-out infinite;}
+.floating-phone:hover{transform:scale(1.1);box-shadow:0 6px 30px rgba(193,163,115,0.5);}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(1);}50%{opacity:1;transform:scaleY(1.2);}}
+@keyframes phonePulse{0%,100%{box-shadow:0 4px 20px rgba(193,163,115,0.4);}50%{box-shadow:0 4px 30px rgba(193,163,115,0.6),0 0 0 8px rgba(193,163,115,0.1);}}
+[data-aos]{opacity:0;transition:opacity 0.8s ease,transform 0.8s ease;}
+[data-aos="fade-up"]{transform:translateY(40px);}
+[data-aos="fade-down"]{transform:translateY(-40px);}
+[data-aos].aos-animate{opacity:1;transform:translateY(0) translateX(0);}
+
+/* Admin Panel */
+.admin-toggle{position:fixed;bottom:24px;left:24px;width:52px;height:52px;background:var(--color-bg-card);color:var(--color-gold);border:1px solid var(--color-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;z-index:998;transition:var(--transition-base);box-shadow:0 4px 20px rgba(0,0,0,0.4);}
+.admin-toggle:hover,.admin-toggle:active{background:var(--color-gold);color:var(--color-bg-dark);border-color:var(--color-gold);transform:scale(1.08);}
+.admin-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:1099;opacity:0;pointer-events:none;transition:var(--transition-base);}
+.admin-overlay.active{opacity:1;pointer-events:auto;}
+.admin-panel{position:fixed;top:0;right:-420px;width:400px;max-width:90vw;height:100vh;z-index:1100;transition:right 0.45s cubic-bezier(0.4,0,0.2,1);}
+.admin-panel.active{right:0;}
+.admin-panel-inner{height:100%;display:flex;flex-direction:column;background:#141414;border-left:1px solid var(--color-border);}
+.admin-header{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--color-border-light);flex-shrink:0;}
+.admin-header h3{font-family:var(--font-serif);font-size:1rem;font-weight:500;color:var(--color-gold);letter-spacing:0.1em;display:flex;align-items:center;gap:10px;}
+.admin-close{width:36px;height:36px;background:transparent;border:1px solid var(--color-border-light);border-radius:50%;color:var(--color-text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:0.85rem;transition:var(--transition-fast);}
+.admin-close:hover,.admin-close:active{border-color:var(--color-gold);color:var(--color-gold);}
+.admin-body{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:20px;}
+.admin-body::-webkit-scrollbar{width:4px;}
+.admin-body::-webkit-scrollbar-thumb{background:var(--color-gold-dark);border-radius:2px;}
+.admin-upload-card{background:var(--color-bg-card);border:1px solid var(--color-border-light);border-radius:6px;overflow:hidden;}
+.admin-upload-card:hover{border-color:var(--color-border);}
+.admin-upload-preview{width:100%;height:140px;overflow:hidden;background:var(--color-bg-dark);display:flex;align-items:center;justify-content:center;}
+.admin-upload-preview img{width:100%;height:100%;object-fit:cover;display:block;}
+.admin-upload-preview .no-img{color:var(--color-text-subtle);font-size:0.75rem;letter-spacing:0.1em;}
+.admin-upload-info{padding:16px 18px;}
+.admin-upload-info h4{font-family:var(--font-serif);font-size:0.92rem;font-weight:500;color:var(--color-text);letter-spacing:0.05em;margin-bottom:2px;}
+.admin-upload-info p{font-size:0.75rem;color:var(--color-text-subtle);margin-bottom:14px;}
+.admin-upload-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:10px 16px;background:transparent;border:1px solid var(--color-gold);color:var(--color-gold);font-family:var(--font-sans);font-size:0.8rem;font-weight:500;letter-spacing:0.08em;border-radius:4px;cursor:pointer;transition:var(--transition-fast);margin-bottom:8px;}
+.admin-upload-btn:hover,.admin-upload-btn:active{background:var(--color-gold);color:var(--color-bg-dark);}
+.admin-upload-btn i{font-size:0.75rem;}
+.admin-reset-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:8px 16px;background:transparent;border:1px solid var(--color-border-light);color:var(--color-text-subtle);font-family:var(--font-sans);font-size:0.72rem;letter-spacing:0.05em;border-radius:4px;cursor:pointer;transition:var(--transition-fast);}
+.admin-reset-btn:hover{border-color:var(--color-text-subtle);color:var(--color-text-muted);}
+.admin-footer{padding:16px 24px;border-top:1px solid var(--color-border-light);flex-shrink:0;}
+.admin-footer p{font-size:0.7rem;color:var(--color-text-subtle);display:flex;align-items:center;gap:6px;}
+.admin-footer i{color:var(--color-gold);font-size:0.72rem;}
+.admin-toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--color-bg-card);color:var(--color-gold);border:1px solid var(--color-border);padding:12px 28px;border-radius:6px;font-size:0.85rem;font-weight:500;letter-spacing:0.05em;display:flex;align-items:center;gap:8px;z-index:2000;opacity:0;transition:opacity 0.35s ease,transform 0.35s ease;box-shadow:0 8px 30px rgba(0,0,0,0.4);pointer-events:none;}
+.admin-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.admin-toast i{color:#4ade80;}
+
+/* Responsive */
+@media(max-width:1024px){
+:root{--section-padding:80px;}
+.concept-grid{grid-template-columns:1fr;max-width:600px;margin:0 auto;}
+.gallery-grid{grid-template-columns:1fr;min-height:auto;}
+.gallery-item-large,.gallery-item-tall{min-height:320px;}
+.gallery-placeholder{min-height:320px;}
+.menu-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}
+.access-grid{grid-template-columns:1fr;}
+.footer-grid{grid-template-columns:1fr 1fr;gap:40px;}
+.footer-brand{grid-column:1/-1;}
+.admin-toggle{bottom:28px;left:20px;width:54px;height:54px;}
+}
+@media(max-width:768px){
+:root{--section-padding:64px;}
+.gallery-overlay{opacity:1;background:linear-gradient(0deg,rgba(10,10,10,0.8) 0%,rgba(10,10,10,0.05) 60%,transparent 100%);padding:24px;}
+.gallery-caption{transform:translateY(0);}
+.gallery-item-large,.gallery-item-tall{min-height:260px;}
+.gallery-placeholder{min-height:260px;}
+.sp-only{display:inline;}
+.nav-toggle{display:flex;}
+.nav-menu{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:rgba(15,15,15,0.98);backdrop-filter:blur(20px);flex-direction:column;padding:100px 40px 40px;gap:24px;transition:var(--transition-base);border-left:1px solid var(--color-border);}
+.nav-menu.active{right:0;}
+.nav-link{font-size:1rem;}
+.nav-cta{text-align:center;width:100%;display:flex;justify-content:center;}
+.hero-title-line{letter-spacing:0.12em;}
+.hero-title-brand{letter-spacing:0.08em;}
+.hero-actions{flex-direction:column;align-items:center;}
+.hero-actions .btn{width:100%;max-width:280px;justify-content:center;}
+.stats-grid{flex-direction:column;gap:32px;}
+.stat-divider{width:40px;height:1px;}
+.menu-card-inner{min-height:auto;}
+.recommend-card{padding:28px 24px;gap:20px;}
+.line-banner{flex-direction:column;text-align:center;padding:36px 28px;}
+.line-content{flex-direction:column;}
+.btn-line{width:100%;}
+.info-card{padding:36px 28px;}
+.map-wrapper{min-height:300px;}
+.map-wrapper iframe{min-height:300px;}
+.footer-grid{grid-template-columns:1fr;gap:32px;}
+.floating-phone{display:flex;}
+.section-header{margin-bottom:48px;}
+.admin-toggle{bottom:92px;left:16px;width:50px;height:50px;}
+.admin-panel{width:100%;max-width:100vw;right:-100%;}
+}
+@media(max-width:480px){
+.concept-card{padding:36px 24px;}
+.hero-badge{padding:6px 16px;}
+.hero-badge span{font-size:0.65rem;}
+.info-shop-name{font-size:1.4rem;}
+.hours-row{flex-direction:column;gap:2px;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo">
+      <span class="logo-main">あまゆび</span>
+      <span class="logo-sub">指圧サロン</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#gallery" class="nav-link">ギャラリー</a></li>
+      <li><a href="#concept" class="nav-link">こだわり</a></li>
+      <li><a href="#menu" class="nav-link">メニュー</a></li>
+      <li><a href="#recommend" class="nav-link">おすすめ</a></li>
+      <li><a href="#access" class="nav-link">アクセス</a></li>
+      <li><a href="tel:0277-40-2611" class="nav-link nav-cta"><i class="fas fa-phone"></i> 予約する</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-image" id="heroBgImage"></div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-particles" id="heroParticles"></div>
+  <div class="hero-content">
+    <div class="hero-badge" data-aos="fade-down"><span>厚生労働省認可 国家資格保有者による施術</span></div>
+    <h1 class="hero-title" data-aos="fade-up">
+      <span class="hero-title-line">ひろく、ふかく、ひびく。</span>
+      <span class="hero-title-brand">あまゆび</span>
+    </h1>
+    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+      揉み返しゼロでほぐしMAX。<br>
+      厚生労働省認可の国家資格保有者が施術する<br class="sp-only">安心の指圧サロン。
+    </p>
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+      <a href="tel:0277-40-2611" class="btn btn-primary"><i class="fas fa-phone"></i><span>お電話で予約</span></a>
+      <a href="#menu" class="btn btn-outline"><span>メニューを見る</span><i class="fas fa-arrow-down"></i></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section class="section gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Salon Gallery</span>
+      <h2 class="section-title">サロンのご紹介</h2>
+      <div class="section-divider"><span></span><i class="fas fa-camera-retro"></i><span></span></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item-large" data-aos="fade-up" data-aos-delay="100">
+        <div class="gallery-image-wrapper">
+          <div class="gallery-placeholder" id="galleryInterior"><i class="fas fa-spa"></i><span>サロン内観</span></div>
+          <div class="gallery-overlay">
+            <div class="gallery-caption">
+              <span class="gallery-tag">Interior</span>
+              <h3>落ち着いた和の空間</h3>
+              <p>心身ともにリラックスできる、こだわりのサロン空間</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gallery-item gallery-item-tall" data-aos="fade-up" data-aos-delay="200">
+        <div class="gallery-image-wrapper">
+          <div class="gallery-placeholder" id="galleryTreatment"><i class="fas fa-hands"></i><span>施術の様子</span></div>
+          <div class="gallery-overlay">
+            <div class="gallery-caption">
+              <span class="gallery-tag">Treatment</span>
+              <h3>確かな技術で深くほぐす</h3>
+              <p>国家資格保有者だからこそできる、安心の施術</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section concept" id="concept">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Our Philosophy</span>
+      <h2 class="section-title">私たちのこだわり</h2>
+      <div class="section-divider"><span></span><i class="fas fa-spa"></i><span></span></div>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="concept-icon"><div class="icon-circle"><i class="fas fa-hand-holding-heart"></i></div><span class="concept-number">01</span></div>
+        <h3 class="concept-title">あまゆびとは？</h3>
+        <div class="concept-line"></div>
+        <p class="concept-text">心身のリラクゼーションに最も適した、柔らかく心地よい指のかたち。その指だからこそ届く、深く響く施術を提供します。</p>
+      </div>
+      <div class="concept-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="concept-icon"><div class="icon-circle"><i class="fas fa-seedling"></i></div><span class="concept-number">02</span></div>
+        <h3 class="concept-title">根本改善を目指して</h3>
+        <div class="concept-line"></div>
+        <p class="concept-text">のべ<strong>13,500人</strong>以上の施術経験から、現代人の不調の共通した原因に着目。一時的な解消ではなく、身体本来の回復力を引き出します。</p>
+      </div>
+      <div class="concept-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="concept-icon"><div class="icon-circle"><i class="fas fa-atom"></i></div><span class="concept-number">03</span></div>
+        <h3 class="concept-title">ホルミシス効果</h3>
+        <div class="concept-line"></div>
+        <p class="concept-text">ホルミシス効果のあるジェルとマットを併用し、より深く、効率的な体質改善をサポート。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" data-aos="fade-up">
+        <div class="stat-number" data-count="13500">0</div>
+        <div class="stat-unit">人以上</div>
+        <div class="stat-label">のべ施術人数</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-number" data-fixed="zero">0</div>
+        <div class="stat-unit">件</div>
+        <div class="stat-label">揉み返し報告</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-number" data-count="100">0</div>
+        <div class="stat-unit">%</div>
+        <div class="stat-label">国家資格保有率</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section menu-section" id="menu">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Treatment Menu</span>
+      <h2 class="section-title">施術メニュー</h2>
+      <div class="section-divider"><span></span><i class="fas fa-hands"></i><span></span></div>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card menu-card-featured" data-aos="fade-up" data-aos-delay="100">
+        <div class="menu-badge">人気No.1</div>
+        <div class="menu-card-inner">
+          <div class="menu-icon"><i class="fas fa-gem"></i></div>
+          <h3 class="menu-name">指圧コース</h3>
+          <div class="menu-duration"><i class="far fa-clock"></i> 80分</div>
+          <div class="menu-price"><span class="price-yen">¥</span><span class="price-amount">8,800</span><span class="price-tax">税込</span></div>
+          <p class="menu-desc">じっくりと全身をほぐし、深い部分のコリや疲れにアプローチ。根本的な改善を目指す方におすすめのスタンダードコース。</p>
+          <a href="tel:0277-40-2611" class="btn btn-menu">予約する</a>
+        </div>
+      </div>
+      <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="menu-card-inner">
+          <div class="menu-icon"><i class="fas fa-hand-sparkles"></i></div>
+          <h3 class="menu-name">指圧コース</h3>
+          <div class="menu-duration"><i class="far fa-clock"></i> 60分</div>
+          <div class="menu-price"><span class="price-yen">¥</span><span class="price-amount">6,600</span><span class="price-tax">税込</span></div>
+          <p class="menu-desc">気になる部位を集中的にケア。初めての方やお時間が限られている方にも最適です。</p>
+          <a href="tel:0277-40-2611" class="btn btn-menu">予約する</a>
+        </div>
+      </div>
+      <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="menu-card-inner">
+          <div class="menu-icon"><i class="fas fa-plus-circle"></i></div>
+          <h3 class="menu-name">オプション</h3>
+          <div class="menu-duration"><i class="far fa-comment-dots"></i> ご相談に応じて</div>
+          <ul class="option-list">
+            <li><i class="fas fa-check"></i> 骨盤調整</li>
+            <li><i class="fas fa-check"></i> 足つぼ</li>
+            <li><i class="fas fa-check"></i> 姿勢バランス調整</li>
+            <li><i class="fas fa-check"></i> 肩甲骨はがし</li>
+          </ul>
+          <p class="menu-desc option-note">お悩みに合わせてお気軽にご相談ください。</p>
+          <a href="tel:0277-40-2611" class="btn btn-menu">相談する</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section recommend-section" id="recommend">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">For You</span>
+      <h2 class="section-title">こんな方におすすめ</h2>
+      <div class="section-divider"><span></span><i class="fas fa-heart"></i><span></span></div>
+    </div>
+    <div class="recommend-grid">
+      <div class="recommend-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="recommend-icon"><i class="fas fa-redo-alt"></i></div>
+        <div class="recommend-content"><h3>繰り返す不調にお悩みの方</h3><p>色々なマッサージや整体を受けたけれど、また元に戻ってしまう。そんな経験をお持ちの方に。</p></div>
+      </div>
+      <div class="recommend-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="recommend-icon"><i class="fas fa-heartbeat"></i></div>
+        <div class="recommend-content"><h3>根本から回復したい方</h3><p>その場しのぎではなく、回復する身体を取り戻したい。身体本来の力を引き出す施術を。</p></div>
+      </div>
+      <div class="recommend-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="recommend-icon"><i class="fas fa-feather-alt"></i></div>
+        <div class="recommend-content"><h3>優しい施術を求める方</h3><p>身体に無理のない優しい施術を受けたい。揉み返しのない、心地よい指圧をお届けします。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="line-section" data-aos="fade-up">
+  <div class="container">
+    <div class="line-banner">
+      <div class="line-content">
+        <div class="line-icon"><i class="fab fa-line"></i></div>
+        <div class="line-text"><h3>LINEからの予約で特典あり</h3><p>24時間いつでもご予約受付中。お気軽にお問い合わせください。</p></div>
+      </div>
+      <a href="https://lin.ee/egGw0OJ" target="_blank" rel="noopener noreferrer" class="btn btn-line"><i class="fab fa-line"></i> LINEで予約する</a>
+    </div>
+  </div>
+</section>
+
+<section class="section access-section" id="access">
+  <div class="container">
+    <div class="section-header" data-aos="fade-up">
+      <span class="section-label">Access & Information</span>
+      <h2 class="section-title">店舗情報・アクセス</h2>
+      <div class="section-divider"><span></span><i class="fas fa-map-marker-alt"></i><span></span></div>
+    </div>
+    <div class="access-grid">
+      <div class="access-info" data-aos="fade-up" data-aos-delay="100">
+        <div class="info-card">
+          <h3 class="info-shop-name"><span class="info-label-jp">指圧サロン</span>あまゆび</h3>
+          <div class="info-table">
+            <div class="info-row">
+              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div class="info-detail"><span class="info-label">住所</span><span class="info-value">〒376-0011 群馬県桐生市相生町2-963-63<br>サロンドキラたかせい2F</span></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fas fa-phone"></i></div>
+              <div class="info-detail"><span class="info-label">電話番号</span><a href="tel:0277-40-2611" class="info-value info-phone">0277-40-2611</a><span class="info-note">お電話一本で相談・予約可能</span></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="far fa-clock"></i></div>
+              <div class="info-detail">
+                <span class="info-label">営業時間</span>
+                <div class="info-hours">
+                  <div class="hours-row"><span class="day-label">月・火</span><span class="day-time">10:00〜18:00</span></div>
+                  <div class="hours-row"><span class="day-label">水・木・金</span><span class="day-time">10:00〜16:00</span></div>
+                  <div class="hours-row"><span class="day-label">土</span><span class="day-time">10:00〜18:00</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fas fa-calendar-times"></i></div>
+              <div class="info-detail"><span class="info-label">定休日</span><span class="info-value">日曜日・祝日</span></div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon"><i class="fab fa-line"></i></div>
+              <div class="info-detail"><span class="info-label">LINE予約</span><span class="info-value">24時間受付中 <span class="line-benefit">特典あり</span></span></div>
+            </div>
+          </div>
+          <div class="info-cta"><a href="tel:0277-40-2611" class="btn btn-primary btn-full"><i class="fas fa-phone"></i> 今すぐ電話で予約</a></div>
+        </div>
+      </div>
+      <div class="access-map" data-aos="fade-up" data-aos-delay="200">
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3211.8!2d139.33!3d36.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDI0JzAwLjAiTiAxMznCsDE5JzQ4LjAiRQ!5e0!3m2!1sja!2sjp!4v1!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="指圧サロンあまゆびの地図"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><span class="logo-main">あまゆび</span><span class="logo-sub">指圧サロン</span></div>
+          <p class="footer-tagline">ひろく、ふかく、ひびく。</p>
+          <p class="footer-desc">厚生労働省認可の国家資格保有者が施術する安心の指圧サロン</p>
+        </div>
+        <div class="footer-nav">
+          <h4>メニュー</h4>
+          <ul>
+            <li><a href="#gallery">ギャラリー</a></li>
+            <li><a href="#concept">こだわり</a></li>
+            <li><a href="#menu">施術メニュー</a></li>
+            <li><a href="#recommend">おすすめ</a></li>
+            <li><a href="#access">アクセス</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>ご予約・お問い合わせ</h4>
+          <a href="tel:0277-40-2611" class="footer-phone"><i class="fas fa-phone"></i> 0277-40-2611</a>
+          <p class="footer-address">〒376-0011 群馬県桐生市相生町2-963-63<br>サロンドキラたかせい2F</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container"><p>&copy; 2025 指圧サロン あまゆび. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<a href="tel:0277-40-2611" class="floating-phone" aria-label="電話で予約"><i class="fas fa-phone"></i></a>
+
+<button class="admin-toggle" id="adminToggle" aria-label="画像管理パネルを開く"><i class="fas fa-images"></i></button>
+
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-panel-inner">
+    <div class="admin-header">
+      <h3><i class="fas fa-images"></i> 画像管理</h3>
+      <button class="admin-close" id="adminClose" aria-label="閉じる"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="admin-body">
+      <div class="admin-upload-card">
+        <div class="admin-upload-preview" id="previewHero"><span class="no-img">ヒーロー背景未設定</span></div>
+        <div class="admin-upload-info">
+          <h4>ヒーロー背景</h4><p>トップ画面の背景画像</p>
+          <label class="admin-upload-btn"><i class="fas fa-upload"></i> 画像を選択<input type="file" accept="image/*" data-target="hero" hidden></label>
+          <button class="admin-reset-btn" data-target="hero"><i class="fas fa-undo"></i> 削除</button>
+        </div>
+      </div>
+      <div class="admin-upload-card">
+        <div class="admin-upload-preview" id="previewInterior"><span class="no-img">サロン内観未設定</span></div>
+        <div class="admin-upload-info">
+          <h4>サロン内観</h4><p>ギャラリー左側の画像</p>
+          <label class="admin-upload-btn"><i class="fas fa-upload"></i> 画像を選択<input type="file" accept="image/*" data-target="interior" hidden></label>
+          <button class="admin-reset-btn" data-target="interior"><i class="fas fa-undo"></i> 削除</button>
+        </div>
+      </div>
+      <div class="admin-upload-card">
+        <div class="admin-upload-preview" id="previewTreatment"><span class="no-img">施術画像未設定</span></div>
+        <div class="admin-upload-info">
+          <h4>施術中の様子</h4><p>ギャラリー右側の画像</p>
+          <label class="admin-upload-btn"><i class="fas fa-upload"></i> 画像を選択<input type="file" accept="image/*" data-target="treatment" hidden></label>
+          <button class="admin-reset-btn" data-target="treatment"><i class="fas fa-undo"></i> 削除</button>
+        </div>
+      </div>
+    </div>
+    <div class="admin-footer"><p><i class="fas fa-info-circle"></i> GitHubで公開後、画像をアップロードして設定してください</p></div>
+  </div>
+</div>
+<div class="admin-overlay" id="adminOverlay"></div>
+
+<script>
+// 画像ストア（メモリ内 - localStorage非使用）
+const imgStore = { hero: null, interior: null, treatment: null };
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initMobileMenu();
+  initScrollAnimations();
+  initCounterAnimation();
+  initHeroParticles();
+  initSmoothScroll();
+  initImageAdmin();
+});
+
+function initNavbar() {
+  const nb = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nb.classList.toggle('scrolled', window.pageYOffset > 60);
+  }, { passive: true });
+}
+
+function initMobileMenu() {
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('navMenu');
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('active');
+    menu.classList.toggle('active');
+    document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+  });
+  menu.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+    toggle.classList.remove('active');
+    menu.classList.remove('active');
+    document.body.style.overflow = '';
+  }));
+  document.addEventListener('click', e => {
+    if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('active')) {
+      toggle.classList.remove('active');
+      menu.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+}
+
+function initScrollAnimations() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const delay = e.target.getAttribute('data-aos-delay') || 0;
+        setTimeout(() => e.target.classList.add('aos-animate'), parseInt(delay));
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+}
+
+function initCounterAnimation() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-number').forEach(c => obs.observe(c));
+}
+
+function animateCounter(el) {
+  if (el.getAttribute('data-fixed') === 'zero') { el.textContent = '0'; return; }
+  const target = parseInt(el.getAttribute('data-count'));
+  const start = performance.now();
+  const duration = 2000;
+  function ease(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function update(now) {
+    const p = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(ease(p) * target).toLocaleString();
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(update);
+}
+
+function initHeroParticles() {
+  const c = document.getElementById('heroParticles');
+  if (!c) return;
+  const style = document.createElement('style');
+  style.textContent = `@keyframes pFloat{0%,100%{transform:translate(0,0) scale(1);opacity:.8;}33%{transform:translate(20px,-40px) scale(1.2);opacity:.5;}66%{transform:translate(-15px,-70px) scale(.8);opacity:.9;}}`;
+  document.head.appendChild(style);
+  for (let i = 0; i < 25; i++) {
+    const p = document.createElement('div');
+    const sz = Math.random() * 3 + 1, op = Math.random() * 0.12 + 0.03;
+    p.style.cssText = `position:absolute;width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:radial-gradient(circle,rgba(193,163,115,${op}),transparent);border-radius:50%;pointer-events:none;animation:pFloat ${Math.random()*15+10}s ${Math.random()*10}s ease-in-out infinite;`;
+    c.appendChild(p);
+  }
+}
+
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const el = document.querySelector(id);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - document.getElementById('navbar').offsetHeight, behavior: 'smooth' });
+    });
+  });
+}
+
+function initImageAdmin() {
+  const panel = document.getElementById('adminPanel');
+  const overlay = document.getElementById('adminOverlay');
+  const toggleBtn = document.getElementById('adminToggle');
+  const closeBtn = document.getElementById('adminClose');
+
+  function open() { panel.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function close() { panel.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+
+  function onTap(el, fn) {
+    let moved = false;
+    el.addEventListener('touchstart', () => moved = false, { passive: true });
+    el.addEventListener('touchmove', () => moved = true, { passive: true });
+    el.addEventListener('touchend', e => { if (!moved) { e.preventDefault(); fn(); } });
+    el.addEventListener('click', fn);
+  }
+
+  onTap(toggleBtn, open);
+  onTap(closeBtn, close);
+  onTap(overlay, close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  function applyImage(key, url) {
+    imgStore[key] = url;
+    if (key === 'hero') {
+      document.getElementById('heroBgImage').style.backgroundImage = `url('${url}')`;
+      document.getElementById('heroBgImage').style.backgroundSize = 'cover';
+      const prev = document.querySelector('#previewHero img') || document.createElement('img');
+      prev.src = url;
+      prev.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+      document.getElementById('previewHero').innerHTML = '';
+      document.getElementById('previewHero').appendChild(prev);
+    } else {
+      const placeholder = document.getElementById(key === 'interior' ? 'galleryInterior' : 'galleryTreatment');
+      const wrapper = placeholder.parentElement;
+      const img = document.createElement('img');
+      img.src = url;
+      img.alt = key;
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0;';
+      placeholder.style.display = 'none';
+      wrapper.insertBefore(img, placeholder);
+      const previewEl = document.getElementById(key === 'interior' ? 'previewInterior' : 'previewTreatment');
+      const pImg = document.createElement('img');
+      pImg.src = url;
+      pImg.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+      previewEl.innerHTML = '';
+      previewEl.appendChild(pImg);
+    }
+  }
+
+  function removeImage(key) {
+    imgStore[key] = null;
+    if (key === 'hero') {
+      document.getElementById('heroBgImage').style.backgroundImage = '';
+      document.getElementById('previewHero').innerHTML = '<span class="no-img">ヒーロー背景未設定</span>';
+    } else {
+      const gId = key === 'interior' ? 'galleryInterior' : 'galleryTreatment';
+      const placeholder = document.getElementById(gId);
+      const wrapper = placeholder.parentElement;
+      wrapper.querySelectorAll('img').forEach(i => i.remove());
+      placeholder.style.display = '';
+      const previewEl = document.getElementById(key === 'interior' ? 'previewInterior' : 'previewTreatment');
+      previewEl.innerHTML = `<span class="no-img">${key === 'interior' ? 'サロン内観' : '施術画像'}未設定</span>`;
+    }
+  }
+
+  document.querySelectorAll('.admin-upload-btn input[type="file"]').forEach(input => {
+    input.addEventListener('change', function() {
+      const file = this.files[0];
+      if (!file || !file.type.startsWith('image/')) return;
+      const key = this.getAttribute('data-target');
+      const reader = new FileReader();
+      reader.onload = e => {
+        resizeImage(e.target.result, 1920, url => { applyImage(key, url); showToast('画像を設定しました'); });
+      };
+      reader.readAsDataURL(file);
+      this.value = '';
+    });
+  });
+
+  document.querySelectorAll('.admin-reset-btn').forEach(btn => {
+    onTap(btn, () => { removeImage(btn.getAttribute('data-target')); showToast('画像を削除しました'); });
+  });
+}
+
+function resizeImage(dataUrl, maxW, cb) {
+  const img = new Image();
+  img.onload = () => {
+    let w = img.width, h = img.height;
+    if (w > maxW) { h = Math.round(h * maxW / w); w = maxW; }
+    const cv = document.createElement('canvas');
+    cv.width = w; cv.height = h;
+    cv.getContext('2d').drawImage(img, 0, 0, w, h);
+    cb(cv.toDataURL('image/jpeg', 0.85));
+  };
+  img.src = dataUrl;
+}
+
+function showToast(msg) {
+  document.querySelectorAll('.admin-toast').forEach(t => t.remove());
+  const t = document.createElement('div');
+  t.className = 'admin-toast';
+  t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+  document.body.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 2500);
+}
+</script>
+
+</body>
+</html>
